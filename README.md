@@ -3,14 +3,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <title>AUSTINWRAP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Comic Neue', sans-serif;
-            background: #F5F5F5 url('https://www.transparenttextures.com/patterns/confetti.png') repeat;
-            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            background: #0A192F;
+            color: #FFFFFF;
             line-height: 1.6;
             font-size: 16px;
             overflow-x: hidden;
@@ -23,19 +23,21 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: #26A69A;
+            background: rgba(10, 25, 47, 0.95);
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+            border-bottom: 2px solid #00D4FF;
         }
         nav .logo {
-            font-family: 'Bungee Shade', cursive;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             font-size: 2.5em;
-            color: #FFF;
-            text-shadow: 2px 2px 4px rgba(205, 220, 57, 0.5);
+            color: #00D4FF;
+            text-shadow: 0 0 10px #00D4FF;
         }
         nav ul {
             list-style: none;
@@ -44,17 +46,18 @@
         }
         nav ul li a {
             text-decoration: none;
-            color: #FFF;
+            color: #FFFFFF;
             font-weight: 700;
             font-size: 1em;
-            transition: color 0.3s, transform 0.3s;
+            transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
             cursor: pointer;
         }
         nav ul li a:hover {
-            color: #CDDC39;
+            color: #00D4FF;
             transform: scale(1.1);
+            text-shadow: 0 0 10px #00D4FF;
         }
-        .hamburger { display: none; font-size: 1.5em; color: #FFF; cursor: pointer; }
+        .hamburger { display: none; font-size: 1.5em; color: #FFFFFF; cursor: pointer; }
         @media (max-width: 768px) {
             nav { padding: 10px 15px; }
             nav .logo { font-size: 1.8em; }
@@ -64,10 +67,11 @@
                 position: fixed;
                 top: 50px;
                 right: 0;
-                background: #26A69A;
+                background: rgba(10, 25, 47, 0.95);
                 padding: 15px;
-                box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2);
+                box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
                 width: 100%;
+                border-bottom: 2px solid #00D4FF;
             }
             nav ul.show { display: flex; }
             .hamburger { display: block; }
@@ -82,29 +86,56 @@
             align-items: center;
             position: relative;
             z-index: 1;
+            background: linear-gradient(135deg, #0A192F 0%, #1E3A8A 100%);
         }
         .landing h1 {
-            font-family: 'Bungee Shade', cursive;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             font-size: 4em;
-            color: #26A69A;
-            text-shadow: 2px 2px 4px rgba(205, 220, 57, 0.5);
+            color: #00D4FF;
+            text-shadow: 0 0 15px #00D4FF, 0 0 25px rgba(0, 212, 255, 0.7);
             margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         .landing p {
             font-size: 1.5em;
-            color: #333;
+            color: #FFFFFF;
             max-width: 600px;
             margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
         }
         .pinata {
             width: 150px;
             height: 150px;
-            background: url('https://cdn-icons-png.flaticon.com/512/3069/3069171.png') no-repeat center/contain;
+            background: linear-gradient(45deg, #00D4FF, #1E3A8A);
+            border-radius: 50%;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 20px;
+            box-shadow: 0 0 20px #00D4FF, inset 0 0 10px rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
         }
-        .pinata:hover { transform: scale(1.1) rotate(5deg); }
+        .pinata::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            transform: rotate(30deg);
+            transition: transform 0.5s ease;
+        }
+        .pinata:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 30px #00D4FF, inset 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+        .pinata:hover::before { transform: rotate(45deg); }
         .tiles {
             display: none;
             max-width: 100%;
@@ -121,56 +152,72 @@
             margin-bottom: 20px;
         }
         .section h2 {
-            font-family: 'Bungee', cursive;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             font-size: 2em;
-            color: #CDDC39;
+            color: #00D4FF;
             margin-bottom: 10px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 0 10px #00D4FF;
             cursor: pointer;
+            transition: text-shadow 0.3s;
         }
+        .section h2:hover { text-shadow: 0 0 15px #00D4FF, 0 0 20px rgba(0, 212, 255, 0.7); }
         .tile-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 10px;
         }
         .tile {
-            background: #CDDC39;
-            border: 3px solid #26A69A;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #00D4FF;
             border-radius: 10px;
             padding: 15px;
             text-align: center;
-            transition: transform 0.3s, background 0.3s;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-            animation: bounceIn 0.5s ease;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(5px);
+            animation: slideIn 0.5s ease forwards;
         }
-        @keyframes bounceIn {
-            0% { transform: scale(0); opacity: 0; }
-            60% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); }
+        @keyframes slideIn {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
         .tile a {
-            color: #333;
+            color: #FFFFFF;
             text-decoration: none;
             font-weight: 700;
             font-size: 1em;
             display: block;
+            transition: color 0.3s;
         }
         .tile:hover {
-            transform: scale(1.05) rotate(2deg);
-            background: #26A69A;
+            transform: scale(1.05);
+            background: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 6px 18px rgba(0, 212, 255, 0.5);
         }
-        .tile:hover a { color: #FFF; }
+        .tile:hover a { color: #00D4FF; }
         footer {
-            background: #26A69A;
-            color: #FFF;
+            background: rgba(10, 25, 47, 0.95);
+            color: #FFFFFF;
             text-align: center;
             padding: 15px;
-            border-top: 4px solid #CDDC39;
+            border-top: 2px solid #00D4FF;
             z-index: 1000;
+            box-shadow: 0 -4px 20px rgba(0, 212, 255, 0.2);
         }
-        footer p { font-size: 1em; margin: 5px 0; }
-        footer a { color: #FFF; text-decoration: none; }
-        footer a:hover { color: #CDDC39; }
+        footer p {
+            font-size: 1em;
+            margin: 5px 0;
+            text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+        }
+        footer a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #00D4FF;
+            text-shadow: 0 0 10px #00D4FF;
+        }
         @media (max-width: 768px) {
             .landing h1 { font-size: 2.5em; }
             .landing p { font-size: 1.2em; }
@@ -197,7 +244,7 @@
 
     <div class="landing" id="home">
         <h1>AUSTINWRAP</h1>
-        <p>Bing bong! Smash the pinata for fun stuff!</p>
+        <p>Crack the pinata—unleash the luxe!</p>
         <div class="pinata" id="pinata"></div>
         <div class="tiles" id="tiles">
             <div class="section" id="services">
